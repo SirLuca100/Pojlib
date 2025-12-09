@@ -31,6 +31,11 @@ jobs:
         distribution: 'temurin'
     - uses: nttld/setup-ndk@v1
       with:
+        ndk-version: r21d
+        local-cache: true
+        link-to-sdk: true
+    - uses: nttld/setup-ndk@v1
+      with:
         ndk-version: r26b
         local-cache: true
         link-to-sdk: true
@@ -49,8 +54,8 @@ jobs:
         QCXR_KEYSTORE_ALIAS: ${{ secrets.QCXR_KEYSTORE_ALIAS }}
         QCXR_KEYSTORE_PASS: ${{ secrets.QCXR_KEYSTORE_PASS }}
 
-    - name: Upload AAR
-      uses: actions/upload-artifact@v4
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
       with:
           name: app-debug
           path: build/outputs/aar/*
